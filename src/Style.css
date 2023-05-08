@@ -1,0 +1,10 @@
+.container{
+    width: 70% !important;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+}
+form{
+    width: 100%;
+}
