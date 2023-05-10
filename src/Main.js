@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import AddCatigory from "./AddCatigory";
 
 
 const Main = () => {
@@ -57,7 +58,7 @@ const handleOk = ()=>{
 
     return (
         <div className={"container"}>
-<button className={"btn btn-danger"} onClick={handleOk}>Hello</button>
+            <AddCatigory />
         </div>
     );
 };

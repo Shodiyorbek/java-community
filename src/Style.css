@@ -1,5 +1,5 @@
 .container{
-    width: 70% !important;
+    width: 100% !important;
     display: flex;
     align-items: start;
     justify-content: center;
@@ -7,4 +7,35 @@
 }
 form{
     width: 100%;
+}
+.main{
+    margin-left: 10px;
+}
+.container-main{
+    left: 0 !important;
+    width: 100%;
+
+
+}
+.paragraph{
+    width: 100%;
+    background: none;
+    display: flex;
+    border: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+
+}
+.paragraph .add-btn{
+    display: none;
+}
+.paragraph:hover{
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.paragraph:hover .add-btn{
+    display: flex;
 }
