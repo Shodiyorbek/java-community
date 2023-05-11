@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import './Style.css'
+import '../../Style.css'
 import {  Modal } from "antd";
 
 
