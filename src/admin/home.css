@@ -36,6 +36,8 @@ body{
     overflow-y:scroll !important;
     height: 90vh !important;
     overflow: scroll;
+    display: flex !important;
+    flex-direction: column !important;
 
 }
 .main-container .left-side .card, .card-header{
@@ -81,4 +83,13 @@ body{
 }
 .main-container .left-side  .card-header .card-link.collapsed .arrow{
 rotate: 0deg!important;
+}
+.alls{
+    width: 20% !important;
+    border-right: 1px solid black;
+    overflow-y:scroll !important;
+    height: 90vh !important;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
 }
