@@ -1,0 +1,84 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.nav{
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #222;
+    position: fixed;
+    padding-left: 15px;
+    padding-right: 15px;
+    top: 0;
+    z-index: 10;
+}
+.logo{
+    width: 70px;
+    height: 70px;
+    background: red;
+}
+.user{
+    width: 70px;
+    height: 70px;
+    background: red;
+}
+.main-container{
+    margin-top: 70px;
+    display: flex;
+}
+.main-container .left-side{
+    width: 20% !important;
+    border-right: 1px solid black;
+    overflow-y:scroll !important;
+    height: 90vh !important;
+    overflow: scroll;
+
+}
+.main-container .left-side .card, .card-header{
+    background: none;
+    border: none;
+
+}
+.main-container .left-side  .card-header a{
+    color: #222;
+}
+.main-container .right-side{
+    padding: 15px;
+    box-sizing: border-box;
+    width: 80%;
+    height: 90vh !important;
+    overflow: scroll;
+}
+.main-container .card .card-body{
+    width: 100% !important;
+    padding: 0;
+    margin: 0;
+}
+.main-container .card li{
+    width: 100%;
+    list-style: none;
+    line-height: 25px;
+    cursor: pointer;
+    padding-left: 15px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.main-container .card li:hover{
+    background: #8473ff;
+    color: white;
+    line-height: 25px;
+
+}
+.main-container .left-side  .card-header .card-link .arrow{
+    font-size: 20px;
+    rotate: -90deg;
+
+}
+.main-container .left-side  .card-header .card-link.collapsed .arrow{
+rotate: 0deg!important;
+}

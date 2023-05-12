@@ -4,10 +4,10 @@ import axios from "axios";
 
 const Register = () => {
     const [user, setUser] = useState({
-        username:"a",
-        password:"1",
-        age:1,
-        info:" ",
+        username:"",
+        password:"",
+        age:"",
+        info:"",
         roles:["admin"]
     });
     const [error, setError] = useState("");
@@ -19,7 +19,7 @@ const Register = () => {
             .post("http://localhost:8080/user",user)
             .then((response) => {
                 localStorage.setItem("token", response.data.token);
-                window.location.reload();
+                window.location.href = "/";
             })
             .catch((error) => {
                 setError("Failed to register.");
@@ -35,29 +35,17 @@ const Register = () => {
 
     return (
         <div className={"container"}>
-            <a href={"/"}>Login</a>
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
-                <div className={"form-group"}>
-                    <label>Username</label>
-                    <input className={"form-control"} type="text" onChange={handleInputChange} name={"username"} />
-                </div>
-                <div className={"form-group"}>
-                    <label>Password:</label>
-                    <input type={"password"} className={"form-control"} onChange={handleInputChange} name={"password"}/>
-                </div>
-                <div className={"form-group"}>
-                    <label>Age:</label>
-                    <input className={"form-control"} type={"text"} onChange={handleInputChange} name={"age"}/>
-                </div>
-                <div className={"form-group"}>
-                    <label>Info:</label>
-                    <input className={"form-control"} type={"text"} onChange={handleInputChange} name={"info"}/>
-                </div>
-
-                <button className={"btn btn-outline-primary"} type="submit">Register</button>
-                {error && <div>{error}</div>}
-            </form>
+            <div className="wrapper">
+                <form onSubmit={handleSubmit} className="form-signin">
+                    <h2 className="form-signin-heading">Please Register</h2>
+                    <input onChange={handleInputChange} type="text" className="form-control" name="username" placeholder="Username" required="" autoFocus=""></input>
+                    <input onChange={handleInputChange} type="text" className="form-control" name="password" placeholder="Password" required="" autoFocus=""></input>
+                    <input onChange={handleInputChange} type="text" className="form-control" name="age" placeholder="Age" required="" autoFocus=""></input>
+                    <input onChange={handleInputChange} type="text" className="form-control" name="info" placeholder="Info" required=""></input>
+                    <a href={"/"}>Login</a>
+                    <button className="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+                </form>
+            </div>
         </div>
     );
 };
