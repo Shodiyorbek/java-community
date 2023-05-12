@@ -2,6 +2,8 @@ import React from "react";
 import {BrowserRouter, Route, Routes, NavLink} from "react-router-dom";
 import Login from "./admin/auth/Login";
 import Register from "./admin/auth/Register";
+import AddCatigory from "./admin/article/AddCatigory";
+import Home from "./admin/home";
 
 
 
@@ -15,6 +17,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/main" element={<Home />} />
                 </Routes>
             </div>
         </BrowserRouter>
