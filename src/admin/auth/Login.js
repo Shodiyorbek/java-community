@@ -33,7 +33,7 @@ const Login = () => {
     }
 
     return (
-        <div className={"container"}>
+        <div className={"container1"}>
             <div className="wrapper">
                 <form onSubmit={handleSubmit} className="form-signin">
                     <h2 className="form-signin-heading">Please login</h2>
