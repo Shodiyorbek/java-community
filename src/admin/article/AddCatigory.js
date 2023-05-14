@@ -12,6 +12,7 @@ const AddCategory = () => {
     const [expandedCategories, setExpandedCategories] = useState([]);
     const [id, setId]=useState({})
 
+
     const handleInputChange = (e)=>{
         console.log(category)
         setCategory({
@@ -25,18 +26,16 @@ const AddCategory = () => {
     const CategoryList = ({ categories, parentCategoryId }) => {
         return categories.map((category) => (
             <React.Fragment key={category.id}>
-                <div className={"paragraph"}>
-                    <div
-                        onClick={() => handleCategoryClick(category.id)}
-                        style={{ cursor: "pointer" }}
-                    >
-                        {category.name}
-                    </div>
+                <div     onClick={() => handleCategoryClick(category.id)}
+                         style={{ cursor: "pointer" }} className={"paragraph"}>
+
+                      {category.name}
+
                     <div
                         className={"add-btn btn btn-outline-primary"}
                         onClick={() => showModal(category.id, parentCategoryId)}
                     >
-                        Add child category
+                        <i className='bx bx-plus'></i>
                     </div>
                 </div>
                 {expandedCategories.includes(category.id) && (
