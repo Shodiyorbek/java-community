@@ -70,12 +70,10 @@ const AddCategory = () => {
     const handleCategoryClick = (categoryId) => {
         setExpandedCategories((prevExpandedCategories) => {
             if (prevExpandedCategories.includes(categoryId)) {
-                // category is currently expanded, so we need to collapse it
                 return prevExpandedCategories.filter(
                     (expandedCategoryId) => expandedCategoryId !== categoryId
                 );
             } else {
-                // category is currently collapsed, so we need to expand it
                 return [...prevExpandedCategories, categoryId];
             }
         });
