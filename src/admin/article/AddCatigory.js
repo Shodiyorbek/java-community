@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../../Style.css";
 import { Modal } from "antd";
+import headerTokenRequest from "../../headerTokenRequest";
 
 const AddCategory = () => {
     const [category, setCategory] = useState({});
@@ -81,10 +82,7 @@ const AddCategory = () => {
     useEffect(() => {
         axios
             .get("http://localhost:8080/category", {
-                headers: {
-                    Authorization: `Bearer ${JSON.parse(string)}`,
-                    "Content-Type": "application/json",
-                },
+                headers: headerTokenRequest(),
             })
             .then((response) => {
                 setCategories(response.data);
@@ -102,10 +100,7 @@ const AddCategory = () => {
 
         axios
             .post("http://localhost:8080/category", category, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                },
+                headers: headerTokenRequest(),
             })
             .then((response) => {
                 console.log("hhh");
