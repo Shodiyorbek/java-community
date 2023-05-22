@@ -8,7 +8,7 @@ const Register = () => {
         password:"",
         age:"",
         info:"",
-        roles:["admin"]
+        roles:["ADMIN"]
     });
     const [error, setError] = useState("");
 
