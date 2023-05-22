@@ -10,38 +10,37 @@ const AddCategory = () => {
     const string = localStorage.getItem("token");
     const [visible, setVisible] = useState(false);
     const [expandedCategories, setExpandedCategories] = useState([]);
-    const [id, setId]=useState({})
+    const [id, setId] = useState({});
 
-
-    const handleInputChange = (e)=>{
-        console.log(category)
+    const handleInputChange = (e) => {
+        console.log(category);
         setCategory({
-                parentId:id.id,
-                name:e.target.value
-            }
-        )
-
-    }
+            parentId: id.id,
+            name: e.target.value,
+        });
+    };
 
     const CategoryList = ({ categories, parentCategoryId }) => {
         return categories.map((category) => (
             <React.Fragment key={category.id}>
-                <div     onClick={() => handleCategoryClick(category.id)}
-                         style={{ cursor: "pointer" }} className={"paragraph"}>
-
-                      {category.name}
+                <div
+                    onClick={() => handleCategoryClick(category.id)}
+                    style={{ cursor: "pointer" }}
+                    className={"paragraph"}
+                >
+                    {category.name}
 
                     <div
                         className={"add-btn btn btn-outline-primary"}
                         onClick={() => showModal(category.id, parentCategoryId)}
                     >
-                        <i className='bx bx-plus'></i>
+                        <i className="bx bx-plus"></i>
                     </div>
                 </div>
                 {expandedCategories.includes(category.id) && (
                     <div className={"main"}>
                         <CategoryList
-                            categories={category.childCategoryResponseList || []}
+                            categories={category.subCategories || []}
                             parentCategoryId={category.id}
                         />
                         {category.articleResponseList?.length > 0 &&
@@ -95,66 +94,75 @@ const AddCategory = () => {
             });
     }, []);
 
-
     const onOkItSelf = (e) => {
         e.preventDefault();
-        console.log(string)
+        console.log(string);
 
         const token = JSON.parse(string);
 
-        axios.post("http://localhost:8080/category", category,
-            {
-
+        axios
+            .post("http://localhost:8080/category", category, {
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    'Content-Type': 'application/json'
-                }
+                    "Content-Type": "application/json",
+                },
             })
             .then((response) => {
-                console.log("hhh")
-                handleOk()
-                window.location.reload()
+                console.log("hhh");
+                handleOk();
+                window.location.reload();
             })
             .catch((error) => {
                 setError("Failed to register.");
-                console.log("ff")
+                console.log("ff");
             });
     };
     const handleOk = () => {
-        console.log("clicked ok")
-        setVisible(false)
-
-    }
+        console.log("clicked ok");
+        setVisible(false);
+    };
 
     const handleCancel = () => {
-        console.log("clicked cancel")
-        setVisible(false)
-    }
+        console.log("clicked cancel");
+        setVisible(false);
+    };
 
-    const showModal = (id,parentId) => {
+    const showModal = (id, parentId) => {
         setVisible(true);
         setId({
-            id:id,
-            parentId:parentId
-        })
-
-    }
-return (
-    <div className={"alls"}>
-        <button className={"btn btn-outline-primary"} onClick={ ()=>showModal(null,null)} type={"button"}>Add super catigory</button>
-        <Modal title="Basic Modal" open={visible} onOk={onOkItSelf} onCancel={handleCancel}>
-            <div className="form-group">
-                <label htmlFor="">Catigory name</label>
-                <input  className="form-control" onChange={handleInputChange} name="file" />
+            id: id,
+            parentId: parentId,
+        });
+    };
+    return (
+        <div className={"alls"}>
+            <button
+                className={"btn btn-outline-primary"}
+                onClick={() => showModal(null, null)}
+                type={"button"}
+            >
+                Add super catigory
+            </button>
+            <Modal
+                title="Basic Modal"
+                open={visible}
+                onOk={onOkItSelf}
+                onCancel={handleCancel}
+            >
+                <div className="form-group">
+                    <label htmlFor="">Catigory name</label>
+                    <input
+                        className="form-control"
+                        onChange={handleInputChange}
+                        name="file"
+                    />
+                </div>
+            </Modal>
+            <div className={"container-main"}>
+                <CategoryList categories={categories} />
             </div>
-        </Modal>
-        <div  className={"container-main"}>
-            <CategoryList categories={categories} />
-
         </div>
-    </div>
+    );
+};
 
-)};
-
-
-export default  AddCategory;
+export default AddCategory;
