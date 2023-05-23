@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import "./home.css"
+import "../home.css"
 class Category extends Component {
     render() {
         return (
@@ -9,7 +9,7 @@ class Category extends Component {
 
                     <div className="card">
                         <div className="card-header">
-                            <a className="card-link" data-toggle="collapse" href="#collapseOne">
+                            <a className="card-link" data-toggle="collapse" href="java-community/src/admin#collapseOne">
                                 <i className='bx bx-chevron-left arrow'></i><span>Kotlin overview</span>
                             </a>
                         </div>

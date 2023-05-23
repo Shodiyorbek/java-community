@@ -2,7 +2,7 @@ import React from "react";
 import {BrowserRouter, Route, Routes, NavLink} from "react-router-dom";
 import Login from "./admin/auth/Login";
 import Register from "./admin/auth/Register";
-import AddCatigory from "./admin/article/AddCatigory";
+import AddCatigory from "./admin/article/add-category";
 import Home from "./admin/home";
 
 
