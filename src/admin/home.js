@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import "./home.css"
-import AddCatigory from "./article/add-category";
+import AddCatigory from "./category/add-category";
+import {Button} from "antd";
 
 class Home extends Component {
     render() {
@@ -13,7 +14,7 @@ class Home extends Component {
                 <div className="main-container">
                    <AddCatigory/>
                     <div className="right-side">
-
+                        <Button>Add Super Category</Button>
                     </div>
                 </div>
             </div>
