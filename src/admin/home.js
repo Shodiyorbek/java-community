@@ -1,25 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import "./home.css"
-import AddCatigory from "./category/add-category";
-import {Button} from "antd";
+import {GetCategory} from "./category/get-category";
+import AddCategory from "./category/add-category";
 
-class Home extends Component {
-    render() {
-        return (
+function Home() {
+    const [id, setID] = React.useState();
+
+    return (
             <div className="continer">
                 <div className="nav">
                     <div className="logo"></div>
                     <div className="user"></div>
                 </div>
                 <div className="main-container">
-                   <AddCatigory/>
+                    <div className="left-side">
+                        <GetCategory setID={setID}/>
+                    </div>
                     <div className="right-side">
-                        <Button>Add Super Category</Button>
+                        <AddCategory id={id} />
                     </div>
                 </div>
             </div>
         );
-    }
 }
 
 export default Home;
