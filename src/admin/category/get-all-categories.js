@@ -5,7 +5,7 @@ import {Menu} from "antd";
 // import "./style.css"
 import SubMenu from "antd/es/menu/SubMenu";
 
-export const GetCategory = ({setID}) => {
+export const GetAllCategories = ({setID}) => {
     const [items, setItems] = useState([])
 
     useEffect(() => {

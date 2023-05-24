@@ -2,6 +2,7 @@ import {Modal} from "antd";
 import React, {useState} from "react";
 import axios from "axios";
 import headerTokenRequest from "../../headerTokenRequest";
+import GetChildCategories from "./get-child-categories";
 
 function AddCategory({id: categoryID}) {
     const [category, setCategory] = useState({});
@@ -77,6 +78,7 @@ function AddCategory({id: categoryID}) {
                 />
             </div>
         </Modal>
+        <GetChildCategories id = {categoryID}/>
     </>
 }
 
