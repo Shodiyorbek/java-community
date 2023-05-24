@@ -85,7 +85,7 @@ body{
 rotate: 0deg!important;
 }
 .alls{
-    width: 20% !important;
+    width: 100% !important;
     border-right: 1px solid black;
     overflow-y:scroll !important;
     height: 90vh !important;

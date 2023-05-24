@@ -39,3 +39,16 @@ form{
 .paragraph:hover .add-btn{
     display: flex;
 }
+
+/*.parent .sub-menu{*/
+/*    position: relative;*/
+/*}*/
+
+/*.parent .sub-menu .sub-item{*/
+/*    position: absolute;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    z-index: 100;*/
+/*}*/
