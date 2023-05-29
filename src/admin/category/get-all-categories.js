@@ -48,7 +48,7 @@ export const GetAllCategories = ({setID}) => {
         return menuItems.map(item => {
             if (item.children !== undefined) {
                 return (
-                    <SubMenu onClick={onClick} key={item.key} title={<div onClick={() => onClick(item.key)}>{item.label}</div>}>
+                    <SubMenu key={item.key} title={<div onClick={() => onClick(item.key)}>{item.label}</div>}>
                         {renderMenuItems(item.children)}
                     </SubMenu>
                 );
