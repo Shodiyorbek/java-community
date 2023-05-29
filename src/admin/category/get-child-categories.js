@@ -50,7 +50,7 @@ function GetChildCategories({id}) {
             console.error(JSON.stringify(err))
         }
 
-    }, [])
+    }, [id])
     return <div>
         <Table dataSource={items.subCategories} columns={columns}/>;
     </div>
