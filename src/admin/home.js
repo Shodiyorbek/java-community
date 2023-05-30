@@ -2,6 +2,8 @@ import React from 'react';
 import "./home.css"
 import {GetAllCategories} from "./category/get-all-categories";
 import AddCategory from "./category/add-category";
+import AddArticle from "./article/add-article";
+import GetChildCategories from "./category/get-child-categories";
 
 function Home() {
     const [id, setID] = React.useState();
@@ -18,6 +20,8 @@ function Home() {
                     </div>
                     <div className="right-side">
                         <AddCategory id={id} />
+                        <AddArticle id={id}/>
+                        <GetChildCategories id = {id}/>
                     </div>
                 </div>
             </div>

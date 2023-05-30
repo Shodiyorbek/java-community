@@ -34,7 +34,12 @@ export const GetAllCategories = ({setID}) => {
     function convertJsonToJsMenuObject(categories) {
         if (categories !== undefined) {
             return Array.from(categories).map((category) => {
-                return getItem(category.name, category.id, "", convertJsonToJsMenuObject(category.subCategories), "")
+                    return getItem(category.name, category.id, "", convertJsonToJsMenuObject(category.subCategories), "")
+                // if (category.articles !== undefined) {
+                //     return Array.from(category.articles).map((article) => {
+                //         return getItem('A ' + article.name, article.id, "", [], "")
+                //     })
+                // }
             })
         }
     }
@@ -54,7 +59,7 @@ export const GetAllCategories = ({setID}) => {
                 );
             }
             return (
-                <Menu.Item onClick={()=>onClick(item.key)} key={item.key}>{item.label}</Menu.Item>
+                <Menu.Item onClick={() => onClick(item.key)} key={item.key}>{item.label}</Menu.Item>
             );
         });
     }
