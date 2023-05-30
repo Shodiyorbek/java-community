@@ -32,14 +32,16 @@ export const GetAllCategories = ({setID}) => {
     }
 
     function convertJsonToJsMenuObject(categories) {
+
         if (categories !== undefined) {
             return Array.from(categories).map((category) => {
+                if (category.articles !== undefined) {
+
+                    category.articles.map((article) => {
+                        return getItem(article.name, article.id, "", [], "")
+                    });
                     return getItem(category.name, category.id, "", convertJsonToJsMenuObject(category.subCategories), "")
-                // if (category.articles !== undefined) {
-                //     return Array.from(category.articles).map((article) => {
-                //         return getItem('A ' + article.name, article.id, "", [], "")
-                //     })
-                // }
+                }
             })
         }
     }
