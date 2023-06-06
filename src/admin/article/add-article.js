@@ -5,10 +5,7 @@ import headerTokenRequest from "../../headerTokenRequest";
 
 function AddArticle({id: categoryID}) {
     const [name, setName] = useState("");
-    const [error, setError] = useState("");
-    const string = localStorage.getItem("token");
     const [visible, setVisible] = useState(false);
-    const [id, setId] = useState({});
 
     const handleInputChange = (e) => {
         setName(e.target.value);
@@ -21,6 +18,7 @@ function AddArticle({id: categoryID}) {
             })
             .then((response) => {
                 handleOk();
+                window.location.reload();
             })
             .catch((error) => {
                 setError("Failed to register.");

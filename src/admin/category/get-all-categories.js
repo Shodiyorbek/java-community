@@ -5,6 +5,7 @@ import {Menu} from "antd";
 // import "./style.css"
 import SubMenu from "antd/es/menu/SubMenu";
 
+
 export const GetAllCategories = ({setID}) => {
     const [items, setItems] = useState([])
 
@@ -21,6 +22,17 @@ export const GetAllCategories = ({setID}) => {
         }
     }, []);
 
+    function convertJsonToJsMenuObject(categories) {
+        if (categories) {
+            return Array.from(categories).map((category) => {
+                let list = (category.articles  || []).map((artice) => getItem(artice.name, artice.id, "", undefined, ""))
+
+                list = [...list, ...convertJsonToJsMenuObject(category.subCategories)];
+                return getItem(category.name, category.id, "", list.length ? list : undefined, "")
+            })
+        }else return []
+    }
+
     function getItem(label, key, icon, children, type) {
         return {
             key,
@@ -29,21 +41,6 @@ export const GetAllCategories = ({setID}) => {
             label,
             type,
         };
-    }
-
-    function convertJsonToJsMenuObject(categories) {
-
-        if (categories !== undefined) {
-            return Array.from(categories).map((category) => {
-                if (category.articles !== undefined) {
-
-                    category.articles.map((article) => {
-                        return getItem(article.name, article.id, "", [], "")
-                    });
-                    return getItem(category.name, category.id, "", convertJsonToJsMenuObject(category.subCategories), "")
-                }
-            })
-        }
     }
 
     const onClick = (id) => {
@@ -77,6 +74,7 @@ export const GetAllCategories = ({setID}) => {
                 >
                     {renderMenuItems(items)}
                 </Menu>
+                <button>Show Sub Article Content</button>
             </div>
         </div>
     </div>
