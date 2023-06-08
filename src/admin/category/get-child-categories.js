@@ -6,6 +6,12 @@ import Column from "antd/es/table/Column";
 
 function GetChildCategories({id}) {
     const [items, setItems] = useState({});
+    const [articleContents, setArticleContents] = useState([])
+    const imageStyles = {
+        width: '450px',
+        height: '350px'
+    };
+
     useEffect(() => {
         try {
             axios
@@ -33,7 +39,18 @@ function GetChildCategories({id}) {
         }
     }
 
+    function showContent() {
+        axios.get("http://localhost:8080/article/sub/content/3c8c4802-c061-472f-bc5a-5b6335a8aaa9", {
+            headers: headerTokenRequest()
+        }).then((res) => {
+            setArticleContents(res.data)
+            console.log(articleContents)
+
+        });
+    }
+
     return <div>
+        <button onClick={showContent}>show</button>
         <h6>CATEGORIES</h6>
         <Table dataSource={items.subCategories}>
             <Column title="id" dataIndex="id" key="id"/>
@@ -72,9 +89,23 @@ function GetChildCategories({id}) {
                     </Space>
                 )}
             />
-        </Table>
+        </Table><br/><br/><br/>
+
+
+        <div className={"image-container"}>
+            {articleContents.map((c) => (
+
+                c.content.startsWith("/images/") ? <img src={c.content} alt={"a"} style={imageStyles}/> :
+                    <h6>{c.content}</h6>
+
+
+            ))}
+        </div>
+
 
     </div>
+
+
 }
 
 export default GetChildCategories;

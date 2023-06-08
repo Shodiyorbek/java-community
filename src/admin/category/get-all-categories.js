@@ -8,6 +8,7 @@ import SubMenu from "antd/es/menu/SubMenu";
 
 export const GetAllCategories = ({setID}) => {
     const [items, setItems] = useState([])
+    const [articleContents, setArticleContents] = useState([])
 
     useEffect(() => {
         try {
@@ -25,12 +26,12 @@ export const GetAllCategories = ({setID}) => {
     function convertJsonToJsMenuObject(categories) {
         if (categories) {
             return Array.from(categories).map((category) => {
-                let list = (category.articles  || []).map((artice) => getItem(artice.name, artice.id, "", undefined, ""))
+                let list = (category.articles || []).map((artice) => getItem(artice.name, artice.id, "", undefined, ""))
 
                 list = [...list, ...convertJsonToJsMenuObject(category.subCategories)];
                 return getItem(category.name, category.id, "", list.length ? list : undefined, "")
             })
-        }else return []
+        } else return []
     }
 
     function getItem(label, key, icon, children, type) {
@@ -63,6 +64,16 @@ export const GetAllCategories = ({setID}) => {
         });
     }
 
+    function getArticleContent() {
+        axios.get("http://localhost:8080/article/sub/content/f449e999-2e24-45f3-b86e-b54494c61f16", {
+            headers: headerTokenRequest()
+        }).then((res) => {
+            setArticleContents(res.data)
+            console.log(articleContents)
+
+        });
+    }
+
     return <div>
         <div className={"alls"}>
             <div className={"container-main"}>
@@ -74,7 +85,7 @@ export const GetAllCategories = ({setID}) => {
                 >
                     {renderMenuItems(items)}
                 </Menu>
-                <button>Show Sub Article Content</button>
+                <button onClick={getArticleContent}>Show Sub Article Content</button>
             </div>
         </div>
     </div>

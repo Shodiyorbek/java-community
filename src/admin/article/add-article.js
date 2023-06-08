@@ -21,7 +21,6 @@ function AddArticle({id: categoryID}) {
                 window.location.reload();
             })
             .catch((error) => {
-                setError("Failed to register.");
             });
     };
     const handleOk = () => {

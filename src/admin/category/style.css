@@ -17,6 +17,14 @@ form{
 
 
 }
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+.image-container img {
+    margin: 10px;
+}
 .paragraph{
     width: 100%;
     background: none;
